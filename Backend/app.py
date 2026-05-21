@@ -2,12 +2,14 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import os
+
 # Create Flask app
 app = Flask(__name__)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 print("Database Location:", os.path.join(basedir, "database.db"))
+
 # Enable CORS
 CORS(app)
 
@@ -36,11 +38,10 @@ with app.app_context():
     db.create_all()
 
 
-# API Route
+# Register API
 @app.route("/register", methods=["POST"])
 def register():
 
-    # Receive frontend data
     data = request.json
 
     name = data.get("name")
@@ -48,7 +49,6 @@ def register():
     phone = data.get("phone")
     address = data.get("address")
 
-    # Create new user object
     new_user = User(
         name=name,
         email=email,
@@ -56,16 +56,32 @@ def register():
         address=address
     )
 
-    # Save into database
     db.session.add(new_user)
-
     db.session.commit()
-
-    print("Data Saved Successfully")
 
     return jsonify({
         "message": "User registered successfully"
     })
+
+
+# GET ALL USERS
+@app.route("/all-users", methods=["GET"])
+def all_users():
+
+    users = User.query.all()
+
+    user_list = []
+
+    for user in users:
+        user_list.append({
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "phone": user.phone,
+            "address": user.address
+        })
+
+    return jsonify(user_list)
 
 
 if __name__ == "__main__":
