@@ -1,0 +1,44 @@
+#heading{
+    padding-top: 50;
+    color: brown;
+    font-style: italic;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#form{
+    padding-left: 460;
+    padding-top:80;
+    word-spacing:200 ;
+}
+
+#nam{
+    word-spacing: 75;
+}
+
+#mail{
+    word-spacing: 50;
+}
+
+#mobile{
+    word-spacing: 72;
+}
+
+#add{
+    word-spacing: 55;
+}
+
+#registerBtn{
+    font-style: italic;
+    font-weight: bolder;
+    margin-top: 80;
+    text-align: center;
+    margin-left: 120;
+    padding-bottom: 20;
+    padding-top: 20;
+    padding-right: 40;
+    padding-left: 40;
+    color: white;
+    background-color: red;
+
+}
