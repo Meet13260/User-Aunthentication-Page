@@ -14,7 +14,7 @@ print("Database Location:", os.path.join(basedir, "database.db"))
 CORS(app)
 
 # Configure SQLite Database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "database.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://user_authentication_pc3n_user:RRcr04Nnjw7H7fWJ2TWi5KCCivRAnl4b@dpg-d87udvb7uimc73atvij0-a/user_authentication_pc3n"
 
 # Initialize database
 db = SQLAlchemy(app)
